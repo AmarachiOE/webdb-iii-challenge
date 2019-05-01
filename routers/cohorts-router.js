@@ -74,4 +74,35 @@ cohortsRouter.post("/", (req, res) => {
   }
 });
 
+// ============ UPDATE
+cohortsRouter.put("/:id", (req, res) => {
+  const cohort = req.body;
+  const cohortId = req.params.id;
+  if (!cohort || !cohort.name) {
+    res.status(400).json({
+      error: "You must include a cohort with a name."
+    });
+  } else {
+    cohortsDb
+      .update(cohortId, cohort)
+      .then(count => {
+        if (count > 0) {
+          res
+            .status(200)
+            .json({
+              message: `${count} ${count > 1 ? "cohorts" : "cohort"} updated!`
+            });
+        } else {
+          res.status(404).json({ error: "This cohort could not be found." });
+        }
+      })
+      .catch(err => {
+        res.status(500).json({
+          error:
+            "There was an error while updating the cohort from the database"
+        });
+      });
+  }
+});
+
 module.exports = cohortsRouter;

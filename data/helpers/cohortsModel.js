@@ -35,8 +35,10 @@ function insert(cohort) {
     .then(ids => ({ cohorts_id: ids[0] }));
 }
 
-function update() {
-  return db("cohorts");
+function update(id, cohort) {
+  return db("cohorts")
+  .where({ cohorts_id: Number(id) })
+  .update(cohort);
 }
 function remove() {
   return db("cohorts");
