@@ -37,9 +37,11 @@ function insert(cohort) {
 
 function update(id, cohort) {
   return db("cohorts")
-  .where({ cohorts_id: Number(id) })
-  .update(cohort);
+    .where({ cohorts_id: Number(id) })
+    .update(cohort);
 }
-function remove() {
-  return db("cohorts");
+function remove(id) {
+  return db("cohorts")
+    .where({ cohorts_id: Number(id) })
+    .del();
 }
