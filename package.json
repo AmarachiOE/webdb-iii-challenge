@@ -1,0 +1,31 @@
+{
+  "name": "webdb-iii-challenge",
+  "version": "1.0.0",
+  "description": "Web DB III Module Challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmarachiOE/webdb-iii-challenge.git"
+  },
+  "keywords": [],
+  "author": "Amarachi Ejiawoko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmarachiOE/webdb-iii-challenge/issues"
+  },
+  "homepage": "https://github.com/AmarachiOE/webdb-iii-challenge#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "knex": "^0.16.5",
+    "morgan": "^1.9.1",
+    "sqlite3": "^4.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
