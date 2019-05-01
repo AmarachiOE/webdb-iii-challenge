@@ -53,4 +53,25 @@ cohortsRouter.get("/:id/students", (req, res) => {
     });
 });
 
+// ============ POST
+cohortsRouter.post("/", (req, res) => {
+  const cohort = req.body;
+  if (!cohort || !cohort.name) {
+    res.status(400).json({
+      error: "You must include a cohort with a name."
+    });
+  } else {
+    cohortsDb
+      .insert(cohort, "id")
+      .then(cohort => {
+        res.status(200).json(cohort);
+      })
+      .catch(err => {
+        res.status(500).json({
+          error: "There was an error while saving the cohort to the database"
+        });
+      });
+  }
+});
+
 module.exports = cohortsRouter;

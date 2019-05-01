@@ -29,8 +29,10 @@ function findStudentsById(id) {
     .where({ cohorts_id: Number(id) });
 }
 
-function insert() {
-  return db("cohorts");
+function insert(cohort) {
+  return db("cohorts")
+    .insert(cohort)
+    .then(ids => ({ cohorts_id: ids[0] }));
 }
 
 function update() {
